@@ -34,6 +34,14 @@ steps:
   args: ["run", "-d", "--name", "mani", "manikantanr/hostname_ip"]
   # waitFor: ['-']
 
+
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Get IP of mani
+  entrypoint: bash
+  args: ["-c", "echo export MANI_IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mani` > envfile"]
+
+
 - name: 'gcr.io/cloud-builders/wget'
   id: wget ipinfo
   args: ["-qO-", "https://ipinfo.io"]
@@ -50,9 +58,11 @@ steps:
   id: Docker alpine ifconfig inside container
   args: ["run", "alpine", "ifconfig"]
 
-- name: 'gcr.io/cloud-builders/wget'
-  id: wget mani:8000
-  args: ["-qO-", "http://mani:8000"]
+- name: 'gcr.io/cloud-builders/docker'
+  id: bash
+  args: ["-c", " source envfile ; curl http://$$MANI_IP:8000"]
+
+
 
 
 
