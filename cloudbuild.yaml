@@ -14,7 +14,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Docker volume inspect homevol
-  args: ["volume", "inpect", "homevol"]
+  args: ["volume", "inspect", "homevol"]
 
 
 - name: 'gcr.io/cloud-builders/docker'
