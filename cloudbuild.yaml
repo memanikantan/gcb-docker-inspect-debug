@@ -14,8 +14,8 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Web server
-  args: ["run", "--net","host","manikantanr/hostname_ip"]
-  waitFor: ['-']
+  args: ["run", "-d", "--net", "host","manikantanr/hostname_ip"]
+  # waitFor: ['-']
 
 - name: 'gcr.io/cloud-builders/wget'
   id: wget
