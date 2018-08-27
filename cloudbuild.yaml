@@ -9,6 +9,18 @@ steps:
   args: ["info"]
 
 - name: 'gcr.io/cloud-builders/docker'
+  id: Docker volume ls
+  args: ["volume", "ls"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker network ls
+  args: ["network", "ls"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker network inspect cloudbuild
+  args: ["network", "inspect", "cloudbuild"]
+
+- name: 'gcr.io/cloud-builders/docker'
   id: Docker ps before
   args: ["container", "ls", "--no-trunc"]
 
@@ -36,3 +48,10 @@ steps:
 - name: 'gcr.io/cloud-builders/wget'
   id: wget mani:8000
   args: ["-qO-", "http://mani:8000"]
+
+
+
+
+
+
+
