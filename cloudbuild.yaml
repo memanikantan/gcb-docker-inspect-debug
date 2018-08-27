@@ -1,0 +1,27 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker Version
+  args: ["version"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker info
+  args: ["info"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker ps before
+  args: ["container", "ls", "--no-trunc"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Web server
+  args: ["run", "--net","host","manikantanr/hostname_ip"]
+  waitFor: ['-']
+
+- name: 'gcr.io/cloud-builders/wget'
+  id: wget
+  args: ["-qO-", "https://ipinfo.io"]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Docker ps after
+  args: ["container", "ls", "--no-trunc"]
+
