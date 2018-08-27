@@ -59,7 +59,8 @@ steps:
   args: ["run", "alpine", "ifconfig"]
 
 - name: 'gcr.io/cloud-builders/docker'
-  id: bash
+  id: Get content of mani
+  entrypoint: bash
   args: ["-c", " source envfile ; curl http://$$MANI_IP:8000"]
 
 
