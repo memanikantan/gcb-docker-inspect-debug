@@ -13,6 +13,11 @@ steps:
   args: ["volume", "ls"]
 
 - name: 'gcr.io/cloud-builders/docker'
+  id: Docker volume inspect homevol
+  args: ["volume", "inpect", "homevol"]
+
+
+- name: 'gcr.io/cloud-builders/docker'
   id: Docker network ls
   args: ["network", "ls"]
 
