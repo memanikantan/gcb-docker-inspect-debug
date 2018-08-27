@@ -31,7 +31,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Docker alpine ifconfig inside container
-  args: ["run", "-it", "alpine", "ifconfig"]
+  args: ["run", "alpine", "ifconfig"]
 
 - name: 'gcr.io/cloud-builders/wget'
   id: wget mani:8000
