@@ -26,5 +26,5 @@ steps:
   args: ["container", "ls", "--no-trunc"]
 
 - name: 'gcr.io/cloud-builders/wget'
-  id: wget
+  id: wget mani:8000
   args: ["-qO-", "http://mani:8000"]
